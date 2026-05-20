@@ -1,3 +1,3 @@
-# Most Boring ToDo List WebApp in The World
+# Most Boring Budget Tracker WebApp in The World
 
-Written in plain HTML, CSS and JavaScript
+Written in plain HTML, CSS and JavaScript (because why not)
