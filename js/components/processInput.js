@@ -35,6 +35,8 @@ form.addEventListener('submit', function(event) {
         const columns = ['type', 'categories', 'amount', 'description', 'date'];
         for (const key of columns) {
             const tableData = document.createElement('td');
+
+            // Red for expenses and green for income
             if (data['type'] === 'expense') {
                 tableData.style.color = 'red';
             }
@@ -46,8 +48,19 @@ form.addEventListener('submit', function(event) {
             tableRow.appendChild(tableData)
             
         }
-        tableBody.appendChild(tableRow)
-    }   
+        // Create button for removal logic
+        const button = document.createElement('button'); 
+        button.innerText = '-';
+        tableRow.appendChild(button);
 
+        tableBody.appendChild(tableRow);
+    }   
 })
 
+table.addEventListener('click', function(event) {
+    // Check if the clicked element is your remove button
+    if (event.target.tagName === 'BUTTON' && event.target.innerText === '-') {
+        const row = event.target.closest('tr');
+        row.remove();
+    }
+});
