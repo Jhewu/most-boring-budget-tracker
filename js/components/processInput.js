@@ -35,8 +35,16 @@ form.addEventListener('submit', function(event) {
         const columns = ['type', 'categories', 'amount', 'description', 'date'];
         for (const key of columns) {
             const tableData = document.createElement('td');
+            if (data['type'] === 'expense') {
+                tableData.style.color = 'red';
+            }
+            else {
+                tableData.style.color = 'green';
+            }
+            
             tableData.textContent = data[key].toLowerCase(); 
             tableRow.appendChild(tableData)
+            
         }
         tableBody.appendChild(tableRow)
     }   
