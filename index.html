@@ -55,14 +55,16 @@
                 type="number"
                 id="amount"
                 placeholder="amount"
+                required
               />
               <input
                 name="description"
                 type="text"
                 id="description"
                 placeholder="description"
+                required
               />
-              <input type="date" name="date" />
+              <input type="date" name="date" id="date" required/>
               <input type="submit" value="Submit" id="expense-button" />
             </div>
           </form>
@@ -70,7 +72,7 @@
       </div>
       <div id="logs">
         <h4>Records Tab</h4>
-        <table>
+        <table id="table-log">
           <thead>
             <tr>
               <th>Type</th>
@@ -81,7 +83,7 @@
             </tr>
           </thead>
           <tbody>
-            <tr>
+            <!-- <tr>
               <td>Expense</td>
               <td>$50.00</td>
               <td>Weekly groceries</td>
@@ -94,7 +96,7 @@
               <td>Monthly salary</td>
               <td>Active</td>
               <td>2026-05-20</td>
-            </tr>
+            </tr> -->
           </tbody>
         </table>
       </div>
