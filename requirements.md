@@ -10,19 +10,19 @@ A requirement is **fulfilled** when it works correctly in the browser without er
 
 ## R1 — Project Structure
 - [x] Project lives in a folder with at least three separate files: `index.html`, `style.css`, `app.js`
-- [ ] `style.css` is linked via `<link>` in the `<head>`
-- [ ] `app.js` is loaded via `<script defer src="app.js">` at the end of `<head>` or before `</body>`
-- [ ] No inline styles or inline `<script>` tags in the HTML file
+- [x] `style.css` is linked via `<link>` in the `<head>`
+- [x] `app.js` is loaded via `<script defer src="app.js">` at the end of `<head>` or before `</body>`
+- [x] No inline styles or inline `<script>` tags in the HTML file
 
 ---
 
 ## R2 — Add a Transaction
 - [ ] A form exists with the following fields:
-  - Description (text input, required)
-  - Amount (number input, required, must reject 0 or negative values)
-  - Type (select or radio: **Income** or **Expense**)
-  - Category (select with at least 5 options, e.g. Food, Rent, Salary, Entertainment, Other)
-  - Date (date input, defaults to today)
+  - [x] Description (text input, required)
+  - [ ] Amount (number input, required, must reject 0 or negative values)
+  - [ ] Type (select or radio: **Income** or **Expense**)
+  - [x] Category (select with at least 5 options, e.g. Food, Rent, Salary, Entertainment, Other)
+  - [ ] Date (date input, defaults to today)
 - [ ] Submitting the form adds the transaction to the list without reloading the page (prevent default)
 - [ ] The form clears itself after a successful submission
 - [ ] Invalid submissions show a visible inline error message (no `alert()` calls)

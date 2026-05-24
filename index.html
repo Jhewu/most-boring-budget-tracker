@@ -1,11 +1,103 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-</head>
-<body>
-    
-</body>
+    <link rel="stylesheet" href="css/main.css" />
+    <script type="module" src="js/main.js"></script>
+  </head>
+  <body>
+    <div id="main-body">
+      <h1>Most Boring Budget Tracker</h1>
+
+      <div class="top-summary">
+        <h4>Summary</h4>
+        <div>Balance: $<span id="balance-display">0.00</span></div>
+        <div>Income: $<span id="income-display">0.00</span></div>
+        <div>Expenses: $<span id="expense-display">0.00</span></div>
+        <div>
+          Top Expense Category:
+          <span id="top-expense-category-display">---</span>
+        </div>
+      </div>
+
+      <div>
+        <h4>Expense/Income Tab</h4>
+        <div>
+          <form id="expense-income-form">
+            <div>
+              <label for="type">Type</label>
+              <select name="type" id="type" required>
+                <option value="expense">Expense</option>
+                <option value="income">Income</option>
+              </select>
+
+              <label for="categories">Select Category: </label>
+
+              <select name="categories" id="categories" required>
+                <option value="" selected disabled>Select a Category</option>
+                <option value="bills">Bills</option>
+                <option value="utilities">Utilities</option>
+                <option value="health">Health</option>
+                <option value="shopping">Shopping</option>
+                <option value="entertainment">Entertainment</option>
+                <option value="food">Food</option>
+                <option value="groceries">Groceries</option>
+                <option value="transportation">Transportation</option>
+                <option value="miscellaneous">Miscellaneous</option>
+              </select>
+            </div>
+            <div>
+              <label for="amount">Enter Amount</label>
+              <input
+                name="amount"
+                type="number"
+                id="amount"
+                placeholder="amount"
+              />
+              <input
+                name="description"
+                type="text"
+                id="description"
+                placeholder="description"
+              />
+              <input type="date" name="date" />
+              <input type="submit" value="Submit" id="expense-button" />
+            </div>
+          </form>
+        </div>
+      </div>
+      <div id="logs">
+        <h4>Records Tab</h4>
+        <table>
+          <thead>
+            <tr>
+              <th>Type</th>
+              <th>Amount</th>
+              <th>Description</th>
+              <th>Category</th>
+              <th>Date</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Expense</td>
+              <td>$50.00</td>
+              <td>Weekly groceries</td>
+              <td>Groceries</td>
+              <td>2026-05-20</td>
+            </tr>
+            <tr>
+              <td>Income</td>
+              <td>$2000.00</td>
+              <td>Monthly salary</td>
+              <td>Active</td>
+              <td>2026-05-20</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </body>
 </html>
