@@ -4,3 +4,8 @@
 table {
     margin: 0 auto; 
 }
+
+#warning {
+    display: none;
+    color: red;
+}
