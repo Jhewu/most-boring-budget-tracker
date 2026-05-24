@@ -21,16 +21,18 @@ typeSelect.addEventListener('change', function() {
     let first = true; 
     for (let cat of categories) {
         const option = document.createElement('option'); 
+        option.textContent = cat; 
+
         if (first) {
             option.disabled = true; 
+            option.value = '';
             first = false;
         }
+        else {option.value = cat; }
         
-        option.value = cat; 
-        option.textContent = cat; 
         categorySelect.appendChild(option); 
     }
-    categorySelect.value = 'Select a Category';
+    categorySelect.value = '';
 })
 
 // Trigger change event on page load to populate initial categories
