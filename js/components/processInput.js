@@ -1,10 +1,19 @@
 // Process input and stores it 
-
 const form = document.querySelector("#expense-income-form"); 
 const table = document.querySelector("#table-log");
+const dashboardComponents = document.querySelectorAll('#top-summary [data-summary]');
 
+console.log(dashboardComponents)
+
+// Display properties
 const warning = document.querySelector("#warning"); 
 const tableMessage = document.querySelector("#table-message");
+
+// Global variables
+const budgetData = {
+    balance: 0, 
+    income: 0, 
+    expense: 0}
 
 function sortTable(tableBody) {
     const sortedRows = Array.from(tableBody.children).sort((rowA, rowB) => {
@@ -30,6 +39,39 @@ function sortTable(tableBody) {
 
 }
 
+function updateDashboard(type, amount, opposite=false) {
+    if (type === 'expense') {
+        if (opposite) {budgetData['expense'] -= Number(amount); }
+        else {budgetData['expense'] += Number(amount); }
+    }
+    else {
+        if (opposite) {budgetData['income'] -= Number(amount); }
+        else {budgetData['income'] += Number(amount);}
+    }
+
+    // Update balance
+    if (opposite) {
+        budgetData['balance'] = budgetData['income'] + budgetData['expense'];}
+    else {budgetData['balance'] = budgetData['income'] - budgetData['expense'];}
+    
+
+    // Update dashboard
+    dashboardComponents.forEach(span => {
+    const metric = span.dataset.summary; 
+    const value = budgetData[metric];
+
+    if (value < 0) {
+        span.style.color = 'red'
+    }
+    else {
+        span.style.color = 'green'
+    }
+
+    // Set the text content
+    span.textContent = value
+    })
+}
+
 form.addEventListener('submit', function(event) {
     event.preventDefault(); 
 
@@ -46,8 +88,7 @@ form.addEventListener('submit', function(event) {
     else {
         // Toggle warning and message off
         warning.style.display = 'none';
-
-        tableMessage.style.display = 'none'
+        tableMessage.style.display = 'none';
     
         // Reset the amount and descripton field        
         const amount = form.elements['amount']; 
@@ -67,17 +108,21 @@ form.addEventListener('submit', function(event) {
             const tableData = document.createElement('td');
 
             // Red for expenses and green for income
+            // Store data to update the dashboard
             if (data['type'] === 'expense') {
                 tableData.style.color = 'red';
             }
             else {
                 tableData.style.color = 'green';
             }
-            
+
             tableData.textContent = data[key].toLowerCase(); 
             tableRow.appendChild(tableData)
             
         }
+        // Update the dashboard
+        updateDashboard(data['type'], data['amount'], false);    
+
         // Create button for removal logic
         const button = document.createElement('button'); 
         button.innerText = '-';
@@ -94,6 +139,17 @@ table.addEventListener('click', function(event) {
     // Check if the clicked element is your remove button
     if (event.target.tagName === 'BUTTON' && event.target.innerText === '-') {
         const row = event.target.closest('tr');
+
+        // Update dashboard if an entry is removed
+        const rowComponents = Array.from(row.children); 
+
+        const type = rowComponents[0].innerText; 
+        const amount = rowComponents[2].innerText;
+
+        console.log(rowComponents, type, amount)
+
+        updateDashboard(type, amount, true);
+
         row.remove();
 
         // Check if table entries are empty
