@@ -3,8 +3,6 @@ const form = document.querySelector("#expense-income-form");
 const table = document.querySelector("#table-log");
 const dashboardComponents = document.querySelectorAll('#top-summary [data-summary]');
 
-console.log(dashboardComponents)
-
 // Display properties
 const warning = document.querySelector("#warning"); 
 const tableMessage = document.querySelector("#table-message");
@@ -145,8 +143,6 @@ table.addEventListener('click', function(event) {
 
         const type = rowComponents[0].innerText; 
         const amount = rowComponents[2].innerText;
-
-        console.log(rowComponents, type, amount)
 
         updateDashboard(type, amount, true);
 
